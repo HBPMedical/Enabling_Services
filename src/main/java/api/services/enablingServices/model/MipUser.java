@@ -1,7 +1,7 @@
 package api.services.enablingServices.model;
 
 import api.services.enablingServices.annotation.Unique;
-import api.services.enablingServices.service.HospitalsService;
+import api.services.enablingServices.service.MipUsersService;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -11,8 +11,8 @@ import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Entity
-@Table(name = "hospitals")
-public class Hospital {
+@Table(name = "mip_users")
+public class MipUser {
 
     @Null
     @Id
@@ -23,14 +23,11 @@ public class Hospital {
 
     @NotNull
     @Size(max = 50)
-    @Unique(service = HospitalsService.class, columnName = "code")
-    @Column(name = "code", unique = true, nullable = false, length = 50)
-    private String code;
+    @Unique(service = MipUsersService.class, columnName = "username")
+    @Column(name = "username", unique = true, nullable = false, length = 50)
+    private String username;
 
-    @Column(name = "label")
-    private String label;
-
-    public Hospital() {
+    public MipUser() {
     }
 
     public UUID getId() {
@@ -41,19 +38,12 @@ public class Hospital {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getUsername() {
+        return username;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
 }

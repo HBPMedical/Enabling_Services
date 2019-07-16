@@ -10,7 +10,9 @@ import java.util.UUID;
 @Repository
 public interface DatasetsRepository extends JpaRepository<Dataset, UUID> {
     Dataset findByCode(String code);
+
     List<Dataset> findByHospital_Id(UUID id);
+
     List<Dataset> findByPathology_Id(UUID id);
 
 }

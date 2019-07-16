@@ -1,16 +1,16 @@
 package api.services.enablingServices.service;
 
 
-import api.services.enablingServices.repository.PathologiesRepository;
+import api.services.enablingServices.repository.MipUsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 @Service
-public class PathologiesServiceImpl implements PathologiesService {
+public class MipUsersServiceImpl implements MipUsersService {
 
     @Autowired
-    private PathologiesRepository pathologiesRepository;
+    private MipUsersRepository mipUsersRepository;
 
     @Override
     public boolean fieldValueExists(Object value, String columnName) throws UnsupportedOperationException {
@@ -19,9 +19,9 @@ public class PathologiesServiceImpl implements PathologiesService {
         if(value == null)
             return false;
 
-        if (!columnName.equals("code")) {
-            throw new UnsupportedOperationException("Column name: " + columnName + " not supported for the Unique Constraint.");
+        if (!columnName.equals("username")) {
+            throw new UnsupportedOperationException("Column: " + columnName + " not supported for the Unique Constraint.");
         }
-        return this.pathologiesRepository.findByCode(value.toString()) != null;
+        return this.mipUsersRepository.findByUsername(value.toString()) != null;
     }
 }

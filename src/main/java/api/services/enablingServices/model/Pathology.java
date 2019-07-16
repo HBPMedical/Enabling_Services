@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @Entity
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
-@Table(name = "pathologies", uniqueConstraints = {@UniqueConstraint(columnNames = {"CODE"})})
+@Table(name = "pathologies")
 public class Pathology {
 
     @Null
@@ -43,7 +43,7 @@ public class Pathology {
 
     @NotNull
     @Type(type = "jsonb")
-    @Column(columnDefinition = "json")
+    @Column(name = "metadata", columnDefinition = "json")
     private JSONObject metadata;
 
     public Pathology() {
@@ -88,11 +88,4 @@ public class Pathology {
     public void setMetadata(JSONObject metadata) {
         this.metadata = metadata;
     }
-
-
-    @Override
-    public String toString() {
-        return "Pathology [id=" + id + ", code=" + code + ", label=" + label + ", version=" + version + ", metadata=" + metadata.toString() + "]";
-    }
-
 }

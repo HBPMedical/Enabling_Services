@@ -1,11 +1,10 @@
 package api.services.enablingServices.validator;
 
 import api.services.enablingServices.annotation.ReferenceExists;
-import api.services.enablingServices.annotation.Unique;
 import api.services.enablingServices.component.ApplicationContextProvider;
-import api.services.enablingServices.service.FieldValueExists;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -20,12 +19,13 @@ public class ReferenceExistsValidator implements ConstraintValidator<ReferenceEx
     public void initialize(ReferenceExists referenceExists) {
         this.repository = (JpaRepository) ApplicationContextProvider.getApplicationContext().getBean(referenceExists.repository());
         String repo = repository.toString();
-        System.out.println(repo);
-
     }
 
     @Override
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
+        if(o == null)
+            return false;
+
         return this.repository.findById((UUID) o).isPresent();
     }
 }

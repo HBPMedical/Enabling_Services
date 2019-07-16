@@ -50,7 +50,7 @@ public class DatasetsController {
 
     @PatchMapping("/datasets/{id}")
     public ResponseEntity<Dataset> updateDataset(@PathVariable(value = "id") UUID datasetId,
-                                                   @Valid @RequestBody Dataset datasetDetails) throws ResourceNotFoundException {
+                                                 @Valid @RequestBody Dataset datasetDetails) throws ResourceNotFoundException {
         Dataset dataset = datasetsRepository.findById(datasetId)
                 .orElseThrow(() -> new ResourceNotFoundException("Dataset not found for this id :: " + datasetId));
 

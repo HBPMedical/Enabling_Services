@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 import java.util.UUID;
 
 @Entity
-@Table(name = "datasets", uniqueConstraints = {@UniqueConstraint(columnNames = {"CODE"})})
+@Table(name = "datasets")
 public class Dataset {
 
     @Null
@@ -25,7 +25,7 @@ public class Dataset {
     private UUID id;
 
     @NotNull
-    @Size(max=50)
+    @Size(max = 50)
     @Unique(service = DatasetsService.class, columnName = "code")
     @Column(name = "code", unique = true, nullable = false, length = 50)
     private String code;
@@ -35,20 +35,20 @@ public class Dataset {
 
     @NotNull
     @ReferenceExists(repository = HospitalsRepository.class)
-    @Column(name = "hospital_id")
-    private UUID hospital_id;
+    @Column(name = "hospital_id", nullable = false)
+    private UUID hospitalId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "hospital_id", referencedColumnName="id",  insertable = false, updatable = false)
+    @JoinColumn(name = "hospital_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Hospital hospital;
 
     @NotNull
     @ReferenceExists(repository = PathologiesRepository.class)
-    @Column(name = "pathology_id")
-    private UUID pathology_id;
+    @Column(name = "pathology_id", nullable = false)
+    private UUID pathologyId;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "pathology_id", referencedColumnName="id", insertable = false, updatable = false)
+    @JoinColumn(name = "pathology_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Pathology pathology;
 
     public Dataset() {
@@ -79,11 +79,11 @@ public class Dataset {
     }
 
     public UUID getHospitalId() {
-        return hospital_id;
+        return hospitalId;
     }
 
-    public void setHospitalId(UUID hospital_id) {
-        this.hospital_id = hospital_id;
+    public void setHospitalId(UUID hospitalId) {
+        this.hospitalId = hospitalId;
     }
 
     public Hospital getHospital() {
@@ -95,11 +95,11 @@ public class Dataset {
     }
 
     public UUID getPathologyId() {
-        return pathology_id;
+        return pathologyId;
     }
 
-    public void setPathologyId(UUID pathology_id) {
-        this.pathology_id = pathology_id;
+    public void setPathologyId(UUID pathologyId) {
+        this.pathologyId = pathologyId;
     }
 
     public Pathology getPathology() {
@@ -109,12 +109,4 @@ public class Dataset {
     public void setPathology(Pathology pathology) {
         this.pathology = pathology;
     }
-
-
-
-    @Override
-    public String toString() {
-        return "Dataset [id=" + id + ", code=" + code + ", label=" + label + "]";
-    }
-
 }

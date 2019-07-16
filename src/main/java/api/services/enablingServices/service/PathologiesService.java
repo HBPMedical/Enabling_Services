@@ -1,3 +1,4 @@
 package api.services.enablingServices.service;
 
-public interface PathologiesService extends FieldValueExists { }
+public interface PathologiesService extends FieldValueExists {
+}

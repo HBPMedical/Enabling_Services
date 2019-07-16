@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class EnablingServicesApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EnablingServicesApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EnablingServicesApplication.class, args);
+    }
 }

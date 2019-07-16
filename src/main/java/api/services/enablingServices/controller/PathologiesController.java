@@ -44,7 +44,7 @@ public class PathologiesController {
 
     @PatchMapping("/pathologies/{id}")
     public ResponseEntity<Pathology> updatePathology(@PathVariable(value = "id") UUID pathologyId,
-                                                   @Valid @RequestBody Pathology pathologyDetails) throws ResourceNotFoundException {
+                                                     @Valid @RequestBody Pathology pathologyDetails) throws ResourceNotFoundException {
         Pathology pathology = PathologiesRepository.findById(pathologyId)
                 .orElseThrow(() -> new ResourceNotFoundException("Pathology not found for this id :: " + pathologyId));
 
