@@ -4,7 +4,6 @@ import api.services.enablingServices.annotation.ReferenceExists;
 import api.services.enablingServices.component.ApplicationContextProvider;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.util.Assert;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -23,7 +22,7 @@ public class ReferenceExistsValidator implements ConstraintValidator<ReferenceEx
 
     @Override
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
-        if(o == null)
+        if (o == null)
             return false;
 
         return this.repository.findById((UUID) o).isPresent();

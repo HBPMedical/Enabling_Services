@@ -27,6 +27,11 @@ public class MipUser {
     @Column(name = "username", unique = true, nullable = false, length = 50)
     private String username;
 
+    @NotNull
+    @Column(name = "password", nullable = false)
+    private String password;
+
+
     public MipUser() {
     }
 
@@ -44,6 +49,14 @@ public class MipUser {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

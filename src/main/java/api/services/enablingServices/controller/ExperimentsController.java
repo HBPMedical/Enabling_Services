@@ -3,7 +3,6 @@ package api.services.enablingServices.controller;
 import api.services.enablingServices.exception.ResourceCannotBeDeletedException;
 import api.services.enablingServices.exception.ResourceNotFoundException;
 import api.services.enablingServices.model.Experiment;
-import api.services.enablingServices.repository.DatasetsRepository;
 import api.services.enablingServices.repository.ExperimentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +40,7 @@ public class ExperimentsController {
 
     @PatchMapping("/experiments/{id}")
     public ResponseEntity<Experiment> updateExperiment(@PathVariable(value = "id") UUID experimentId,
-                                                     @Valid @RequestBody Experiment experimentDetails) throws ResourceNotFoundException {
+                                                       @Valid @RequestBody Experiment experimentDetails) throws ResourceNotFoundException {
         Experiment experiment = experimentsRepository.findById(experimentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Experiment not found for this id :: " + experimentId));
 

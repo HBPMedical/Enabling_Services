@@ -16,7 +16,7 @@ public class DatasetsServiceImpl implements DatasetsService {
     public boolean fieldValueExists(Object value, String columnName) throws UnsupportedOperationException {
         Assert.notNull(columnName, "Column name should not be null when checking if the value exists.");
 
-        if(value == null)
+        if (value == null)
             return false;
 
         if (!columnName.equals("code")) {
