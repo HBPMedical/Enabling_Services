@@ -7,7 +7,6 @@ Enabling Services for the MIP front end.
 	docker build -t hbpmedical/enabling_services .
 	
 
-
 ## Deploy:
 
 ### Create local docker network
@@ -21,8 +20,6 @@ Enabling Services for the MIP front end.
 
 	psql --host 127.0.0.1 --port 5432 --username postgres -f /path/to/the/postgresDatabaseSchema.sql
 
-
-
 ### Run the Spring Boot API
 	
-	docker run -d --name enabling_services --network=enabling_services hbpmip/enabling_services:latest
+	docker run -d --name enabling_services --network=enabling_services -p 8090:8090 thanasulas/enabling_services:latest

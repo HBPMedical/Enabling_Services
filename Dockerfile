@@ -1,3 +1,9 @@
-FROM tomcat:9.0
-LABEL maintainer="tkarabatsis@di.uoa.gr"
-COPY target/enabling-services-0.0.1-SNAPSHOT	 /usr/local/tomcat/webapps/enabling-services-0.0.1-SNAPSHOT
+FROM java:8
+
+LABEL maintainer=“tkarabatsis@di.uoa.gr”
+
+WORKDIR /app
+
+COPY target/enabling-services-0.0.1-SNAPSHOT.jar /app/enablingServices.jar
+
+ENTRYPOINT ["java","-jar","enablingServices.jar"]
