@@ -1,6 +1,8 @@
 package api.services.enablingServices.model;
 
+import api.services.enablingServices.annotation.ReferenceExists;
 import api.services.enablingServices.annotation.Unique;
+import api.services.enablingServices.repository.MipUsersRepository;
 import api.services.enablingServices.service.ExperimentsService;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import org.hibernate.annotations.GenericGenerator;
@@ -37,7 +39,7 @@ public class Experiment {
     private String label;
 
     @NotNull
-    //@ReferenceExists(repository = MipUsersRepository.class)
+    @ReferenceExists(repository = MipUsersRepository.class)
     @Column(name = "mip_user_id", nullable = false)
     private UUID mipUserId;
 

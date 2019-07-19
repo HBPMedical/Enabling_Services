@@ -11,6 +11,7 @@
     <groupId>net.guides.springboot2</groupId>
     <artifactId>enabling-services</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>Enabling Services</name>
     <description>Enabling Services for the MIP</description>
 
@@ -19,6 +20,13 @@
     </properties>
 
     <dependencies>
+        <!-- maven wrapper  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <!-- <scope>provided</scope> -->
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
