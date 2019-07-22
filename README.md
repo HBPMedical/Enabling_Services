@@ -4,7 +4,7 @@ Enabling Services for the MIP front end.
 ## Create Image
 
 	mvn package
-	docker build -t hbpmedical/enabling_services .
+	docker build -t hbpmip/enabling_services .
 	
 
 ## Deploy:
@@ -22,4 +22,4 @@ Enabling Services for the MIP front end.
 
 ### Run the Spring Boot API
 	
-	docker run -d --name enabling_services --network=enabling_services -p 8090:8090 thanasulas/enabling_services:latest
+	docker run -d --name enabling_services --network=enabling_services -p 8090:8090 hbpmip/enabling_services:latest
